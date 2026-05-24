@@ -11,14 +11,19 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Instala dependências
-        run: echo "Instalando dependências..."
+      - name: Configura Java 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
 
-      - name: Roda os testes
-        run: echo "Rodando testes..."
+      - name: Build e testes com Maven
+        run: mvn test
+        working-directory: minha-app
 
-      - name: Build da aplicação
-        run: echo "Buildando aplicação..."
+      - name: Gera o JAR
+        run: mvn package -DskipTests
+        working-directory: minha-app
 
-      - name: Deploy
-        run: echo "Fazendo deploy..."
+      - name: Build concluído
+        run: echo "JAR gerado com sucesso!"
