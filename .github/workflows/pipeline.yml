@@ -1,0 +1,24 @@
+name: Pipeline CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instala dependências
+        run: echo "Instalando dependências..."
+
+      - name: Roda os testes
+        run: echo "Rodando testes..."
+
+      - name: Build da aplicação
+        run: echo "Buildando aplicação..."
+
+      - name: Deploy
+        run: echo "Fazendo deploy..."
