@@ -1,0 +1,15 @@
+replicaCount: 1
+
+image:
+  repository: minha-app
+  tag: "1.0"
+  pullPolicy: Never
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 8080
+  nodePort: 30090
+
+app:
+  name: minha-app

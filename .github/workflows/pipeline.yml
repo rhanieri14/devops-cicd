@@ -25,5 +25,14 @@ jobs:
         run: mvn package -DskipTests
         working-directory: minha-app
 
-      - name: Build concluído
-        run: echo "JAR gerado com sucesso!"
+      - name: Build da imagem Docker
+        run: docker build -t minha-app:${{ github.sha }} ./minha-app
+
+      - name: Resumo do build
+        run: |
+          echo "=========================================="
+          echo "Build finalizado com sucesso!"
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Imagem: minha-app:${{ github.sha }}"
+          echo "=========================================="
